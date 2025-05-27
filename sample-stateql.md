@@ -36,7 +36,7 @@ Task:
 
 - addFile is action thru put(attachments)
 
-- removeFile is action thru drop(attachments key)
+- removeFile is action thru drop(attachments :key)
 
 - markComplete is action thru set(completionStatus value:on)
 
@@ -48,7 +48,7 @@ Task:
 
 - relatedTasks is many Task and self
 
-- priority is text thru either("high", "medium", "low")
+- priority is text thru either("high" "medium" "low")
 
 - dueDate is date
 
@@ -58,4 +58,4 @@ Task:
 
 - endTime is timestamp
 
-- timeSpent is seconds thru sum(subtasks.timeSpent, ticktock(startTime, endTime))
+- timeSpent is seconds thru sum(subtasks.timeSpent ticktock(startTime endTime))
