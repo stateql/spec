@@ -32,7 +32,7 @@ Task:
 
 - assignees is many User through .assignedTasks
 
-- summary is text through summarize(.content, length:”short”)
+- summary is text through summarize(.content, length:short) -- we'll need to prioritize eigenvalues by nearest scope so as to not limit other eigenvalues (i.e. `short` should also be able to be defined in this schema)
 
 - addFile is action through put(.attachments)
 
