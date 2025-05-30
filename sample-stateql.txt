@@ -46,7 +46,7 @@ Task:
 
 - subtask is action through put(.subtasks)
 
-- relatedTasks is many Task and itself
+- relatedTasks is many Task and related
 
 - priority is text through either("high", "medium", "low") -- variable argument length
 
