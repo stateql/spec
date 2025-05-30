@@ -14,7 +14,7 @@ User:
 
 - assignedTasks is many Task through .assignees
 
-- countTasksCompleted is number through count(.assignedTasks.completionStatus == up)
+- countTasksCompleted is number through count(.assignedTasks.completionStatus == done)
 
 Task:
 
@@ -26,7 +26,7 @@ Task:
 
 - attachments is many file -- blob
 
-- completionStatus is eigenstate
+- completionStatus is eigenstate through either(done, not_done)
 
 - author is User through .authoredTasks
 
@@ -38,7 +38,7 @@ Task:
 
 - removeFile is action through drop(.attachments, :key) -- named slot `key` requires that it be supplied before executing `removeFile`
 
-- markComplete is action through set(.completionStatus, value:up)
+- markComplete is action through set(.completionStatus, value:done)
 
 - parentTasks is many Task and super
 
@@ -46,9 +46,9 @@ Task:
 
 - subtask is action through put(.subtasks)
 
-- relatedTasks is many Task and related
+- relatedTasks is many Task and related -- let's enforce that supers and subs and related are mutually exclusive to avoid headaches
 
-- priority is text through either("high", "medium", "low") -- variable argument length
+- priority is eigenstate through either(high, medium, low) -- variable argument length
 
 - dueDate is date
 
