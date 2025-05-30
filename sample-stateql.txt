@@ -40,9 +40,9 @@ Task:
 
 - markComplete is action through set(.completionStatus, value:up)
 
-- parentTasks is many Task and parents
+- parentTasks is many Task and super
 
-- subtasks is many Task and children
+- subtasks is many Task and sub
 
 - subtask is action through put(.subtasks)
 
