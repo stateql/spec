@@ -52,7 +52,7 @@ Task:
 
 - dueDate is date
 
-- timeRemaining is seconds through ticktock(.duedate) -- possible positive if ticktock has surpassed the due date, negative if before (similar to T-minus measuring)
+- timeRemaining is seconds through ticktock(.dueDate) -- possible positive if ticktock has surpassed the due date, negative if before (similar to T-minus measuring)
 
 - startTime is timestamp
 
