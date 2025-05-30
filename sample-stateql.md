@@ -4,17 +4,17 @@ User:
 
 - name is text
 
-- friends is many User thru befriendedBy
+- friends is many User through .befriendedBy
 
-- befriendedBy is many User thru friends
+- befriendedBy is many User through .friends
 
-- popularity is number thru count(friends)
+- popularity is number through count(.friends)
 
-- authoredTasks is many Task thru author
+- authoredTasks is many Task through .author
 
-- assignedTasks is many Task thru assignees
+- assignedTasks is many Task through .assignees
 
-- countTasksCompleted is number thru count(assignedTasks.completionStatus == on)
+- countTasksCompleted is number through count(.assignedTasks.completionStatus == up)
 
 Task:
 
@@ -24,38 +24,38 @@ Task:
 
 - content is text
 
-- attachments is many file
+- attachments is many file -- blob
 
-- completionStatus is switch
+- completionStatus is eigenstate
 
-- author is User thru authoredTasks
+- author is User through .authoredTasks
 
-- assignees is many User thru assignedTasks
+- assignees is many Task through .assignedTasks
 
-- summary is text thru summarize(content length:”short”)
+- summary is text through summarize(.content, length:”short”)
 
-- addFile is action thru put(attachments)
+- addFile is action through put(.attachments)
 
-- removeFile is action thru drop(attachments :key)
+- removeFile is action through drop(.attachments, :key) -- named slot `key` requires that it be supplied before executing `removeFile`
 
-- markComplete is action thru set(completionStatus value:on)
+- markComplete is action through set(.completionStatus, value:up)
 
 - parentTasks is many Task and parents
 
 - subtasks is many Task and children
 
-- subtask is action thru put(subtasks)
+- subtask is action through put(.subtasks)
 
-- relatedTasks is many Task and self
+- relatedTasks is many Task and itself
 
-- priority is text thru either("high" "medium" "low")
+- priority is text through either("high", "medium", "low") -- variable argument length
 
 - dueDate is date
 
-- timeRemaining is seconds thru ticktock(duedate) // can be positive and negative
+- timeRemaining is seconds through ticktock(.duedate) -- possible positive if ticktock has surpassed the due date, negative if before (similar to T-minus measuring)
 
 - startTime is timestamp
 
 - endTime is timestamp
 
-- timeSpent is seconds thru sum(subtasks.timeSpent ticktock(startTime endTime))
+- timeSpent is seconds through sum(.subtasks.timeSpent, ticktock(.startTime, .endTime))
