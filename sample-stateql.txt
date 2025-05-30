@@ -58,4 +58,4 @@ Task:
 
 - endTime is timestamp
 
-- timeSpent is seconds through sum(.subtasks.timeSpent, ticktock(.startTime, .endTime))
+- timeSpent is seconds through sum(.subtasks.timeSpent, ticktock(.startTime, .endTime)) -- formally, this will go down one level and aggregate.                                                                                                 -- implicitly, this will recurse the dependency graph all the way to the bottom...
