@@ -30,7 +30,7 @@ Task:
 
 - author is User through .authoredTasks
 
-- assignees is many Task through .assignedTasks
+- assignees is many User through .assignedTasks
 
 - summary is text through summarize(.content, length:”short”)
 
