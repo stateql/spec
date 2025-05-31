@@ -1,6 +1,6 @@
 User:
 
-- id is text
+- id is uuid
 
 - name is text
 
