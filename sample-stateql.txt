@@ -18,7 +18,7 @@ User:
 
 Task:
 
-- id is text
+- id is uuid
 
 - title is text
 
